@@ -18,3 +18,26 @@ isort = "^5.10.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+line_length = 88
+py_version=310
+
+[tool.semantic_release]
+# for default values check:
+# https://github.com/python-semantic-release/python-semantic-release/blob/v7.32.2/semantic_release/defaults.cfg
+
+version_source = "tag_only"
+branch = "main"
+
+# configure types which should trigger minor and patch version bumps respectively
+# (note that they must be a subset of the configured allowed types):
+parser_angular_allowed_types = "build,chore,ci,docs,feat,fix,perf,style,refactor,test"
+parser_angular_minor_types = "feat"
+parser_angular_patch_types = "fix,perf"
